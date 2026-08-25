@@ -1,10 +1,11 @@
-from fastapi import APIRouter, status
+from fastapi import APIRouter, Query, status
+
 from schemas import BookCreateSchema, BookSavedSchema
-from bson import ObjectId
 from storage import storage
 
+
 api_router = APIRouter(
-    prefix='/api/books',
+    prefix="/api/books",
 )
 
 
@@ -13,3 +14,20 @@ def create_book(book: BookCreateSchema) -> BookSavedSchema:
     saved_book = storage.create_book(book)
 
     return saved_book
+
+
+@api_router.get("/{book_id}")
+def get_book(book_id: str) -> BookSavedSchema:
+    saved_book = storage.get_book(book_id)
+
+    return saved_book
+
+
+@api_router.get("")
+def get_books(
+    page: int = Query(default=1, ge=1),
+    q: str = Query(default=""),
+) -> list[BookSavedSchema]:
+    saved_books = storage.get_books(q=q, page=page)
+
+    return saved_books

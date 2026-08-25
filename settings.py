@@ -5,6 +5,7 @@ class Settings(BaseSettings):
     MONGO_URI: str
     MONGO_DB: str
     MONGO_BOOK_COLLECTION: str
+    PAGE_SIZE: int = 10
 
     model_config = SettingsConfigDict(
         env_file=".env",
