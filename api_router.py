@@ -47,4 +47,4 @@ def patch_book(book_id: str, new_book_data: BookPriceImageSchema) -> BookSavedSc
 def put_book(book_id: str, book: BookCreateSchema) -> BookSavedSchema:
     put_book_obj = storage.update_book(book_id, book)
 
-    return put_book_obj
+    return put_book

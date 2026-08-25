@@ -78,7 +78,7 @@ class MongoDBStorage(BaseStorage):
                 status_code=status.HTTP_404_NOT_FOUND
             )
 
-        book = self.transform_book(book)
+        book = self.transform_book()
 
         return book
 
@@ -119,7 +119,7 @@ class MongoDBStorage(BaseStorage):
         books = self.collection.find(query).limit(settings.PAGE_SIZE).skip(skip)
         saved_books = []
         for book in books:
-            saved_books.append(self.transform_book(book))
+            saved_books.append(self.transform_book()
 
         return saved_books
 
