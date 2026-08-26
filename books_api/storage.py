@@ -6,8 +6,8 @@ from bson.errors import InvalidId
 from fastapi import HTTPException, status
 from abc import ABC, abstractmethod
 
-from schemas import BookCreateSchema, BookSavedSchema, BookPriceImageSchema
-from settings import settings
+from books_api.schemas import BookCreateSchema, BookSavedSchema, BookPriceImageSchema
+from books_api.settings import settings
 
 
 

@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from api_router import api_router
+from books_api.api_router import api_router
 
 app = FastAPI(
     title="final project"
